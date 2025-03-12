@@ -105,7 +105,7 @@ function events.TICK()
 			
 			if dis < 0.25 then
 				
-				lerp:remove(part.scale)
+				part.scale:remove()
 				part.trails:remove()
 				table.remove(trails, _)
 				
@@ -142,7 +142,7 @@ function events.TICK()
 			-- If trail is too small, remove it
 			if part.scale.currPos:length() <= 0.05 then
 				
-				lerp:remove(part.scale)
+				part.scale:remove()
 				part.trails:remove()
 				table.remove(trails, _)
 				
