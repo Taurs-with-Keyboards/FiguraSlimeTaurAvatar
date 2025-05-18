@@ -11,15 +11,7 @@ local rainbow = config:load("ColorRainbow") or false
 if pick == nil then pick = true end
 
 -- Create random color
-local pickedColor = config:load("ColorPicked")
-if not pickedColor then
-	function events.ENTITY_INIT()
-		
-		local s1, s2, s3 = client:uuidToIntArray(player:getUUID())
-		pickedColor = vec(s1 % 256, s2 % 256, s3 % 256) / 255
-		
-	end
-end
+local pickedColor = config:load("ColorPicked") or vec(client.uuidToIntArray(avatar:getUUID())).xyz % 256 / 255
 
 -- Variables
 local selectedRGB = 0
