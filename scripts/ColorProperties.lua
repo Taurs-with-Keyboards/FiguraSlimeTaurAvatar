@@ -5,10 +5,21 @@ local ground = require("lib.GroundCheck")
 
 -- Config setup
 config:name("SlimeTaur")
-local pick        = config:load("ColorPick") or false
-local pickedColor = config:load("ColorPicked") or vectors.hexToRGB("51A03E")
-local camo        = config:load("ColorCamo") or false
-local rainbow     = config:load("ColorRainbow") or false
+local pick    = config:load("ColorPick")
+local camo    = config:load("ColorCamo") or false
+local rainbow = config:load("ColorRainbow") or false
+if pick == nil then pick = true end
+
+-- Create random color
+local pickedColor = config:load("ColorPicked")
+if not pickedColor then
+	function events.ENTITY_INIT()
+		
+		local s1, s2, s3 = client:uuidToIntArray(player:getUUID())
+		pickedColor = vec(s1 % 256, s2 % 256, s3 % 256) / 255
+		
+	end
+end
 
 -- Variables
 local selectedRGB = 0
