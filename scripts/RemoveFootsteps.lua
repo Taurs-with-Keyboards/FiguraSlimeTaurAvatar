@@ -10,6 +10,8 @@ function events.ON_PLAY_SOUND(id, pos, vol, pitch, loop, cat, path)
 	if (player:getPos() - pos):length() > 0.05 then return end
 	
 	-- If sound contains ".step", ".fall", ".big_fall", or ".small_fall", stop the sound
-	if id:find(".step") or id:find(".fall") or id:find(".big_fall") or id:find(".small_fall") then return true end
+	if id:find(".step") or id:find(".fall") or id:find(".big_fall") or id:find(".small_fall") then
+		return true
+	end
 	
 end
