@@ -102,13 +102,15 @@ function events.RENDER(delta, context)
 	
 	if action_wheel:isEnabled() then
 		t.embedAct
-			:title(toJson
-				{"",
-				{text = "Toggle Slime Items\n\n", bold = true, color = color.primary},
-				{text = "Toggles the visibility of inventory items within your slime.", color = color.secondary},
-				{text = "\n\nNotice:\n", bold = true, color = "gold"},
-				{text = "This feature currently does not function for other clients, only the host.\nThis is because I suck at coding. -Total", color = "yellow"}}
-			)
+			:title(toJson(
+				{
+					"",
+					{text = "Toggle Slime Items\n\n", bold = true, color = color.primary},
+					{text = "Toggles the visibility of inventory items within your slime.", color = color.secondary},
+					{text = "\n\nNotice:\n", bold = true, color = "gold"},
+					{text = "This feature currently does not function for other clients, only the host.\nThis is because I suck at coding. -Total", color = "yellow"}
+				}
+			))
 		
 		for _, act in pairs(t) do
 			act:hoverColor(color.hover):toggleColor(color.active)

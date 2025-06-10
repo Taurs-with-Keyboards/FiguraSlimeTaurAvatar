@@ -100,39 +100,39 @@ function events.RENDER(delta, context)
 	
 	if action_wheel:isEnabled() then
 		pageActs.avatar
-			:title(toJson
+			:title(toJson(
 				{text = "Avatar Settings", bold = true, color = color.primary}
-			)
+			))
 		
 		pageActs.slime
-			:title(toJson
+			:title(toJson(
 				{text = "Slime Settings", bold = true, color = color.primary}
-			)
+			))
 		
 		pageActs.color
-			:title(toJson
+			:title(toJson(
 				{text = "Color Settings", bold = true, color = color.primary}
-			)
+			))
 		
 		pageActs.anims
-			:title(toJson
+			:title(toJson(
 				{text = "Animations", bold = true, color = color.primary}
-			)
+			))
 		
 		pageActs.armor
-			:title(toJson
+			:title(toJson(
 				{text = "Armor Settings", bold = true, color = color.primary}
-			)
+			))
 		
 		pageActs.camera
-			:title(toJson
+			:title(toJson(
 				{text = "Camera Settings", bold = true, color = color.primary}
-			)
+			))
 		
 		pageActs.wobble
-			:title(toJson
+			:title(toJson(
 				{text = "Wobble Settings", bold = true, color = color.primary}
-			)
+			))
 			:item(itemCheck("potion{\"CustomPotionColor\":" .. tostring(vectors.rgbToInt(color.hover)) .. "}"))
 		
 		for _, act in pairs(pageActs) do
@@ -145,9 +145,9 @@ end
 
 -- Action back to previous page
 local backAct = action_wheel:newAction()
-	:title(toJson
+	:title(toJson(
 		{text = "Go Back?", bold = true, color = "red"}
-	)
+	))
 	:hoverColor(vectors.hexToRGB("FF5555"))
 	:item(itemCheck("barrier"))
 	:onLeftClick(function() ascend() end)

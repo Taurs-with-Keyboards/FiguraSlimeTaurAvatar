@@ -230,36 +230,42 @@ function events.RENDER(delta, context)
 	
 	if action_wheel:isEnabled() then
 		t.pickAct
-			:title(toJson
-				{"",
-				{text = "Toggle Picked Color Mode\n\n", bold = true, color = c.primary},
-				{text = "Toggles the usage of a picked color.\n\n", color = c.secondary},
-				{text = "Selected RGB: ", bold = true, color = c.secondary},
-				{text = (selectedRGB == 0 and "[%d] "  or "%d " ):format(pickedColor[1] * 255), color = "red"},
-				{text = (selectedRGB == 1 and "[%d] "  or "%d " ):format(pickedColor[2] * 255), color = "green"},
-				{text = (selectedRGB == 2 and "[%d]\n" or "%d\n"):format(pickedColor[3] * 255), color = "blue"},
-				{text = "Selected Hex: ", bold = true, color = c.secondary},
-				{text = vectors.rgbToHex(pickedColor).."\n\n", color = "#"..vectors.rgbToHex(pickedColor)},
-				{text = "Scroll to adjust an RGB Value.\nRight click to change selection.", color = c.secondary}}
-			)
+			:title(toJson(
+				{
+					"",
+					{text = "Toggle Picked Color Mode\n\n", bold = true, color = c.primary},
+					{text = "Toggles the usage of a picked color.\n\n", color = c.secondary},
+					{text = "Selected RGB: ", bold = true, color = c.secondary},
+					{text = (selectedRGB == 0 and "[%d] "  or "%d " ):format(pickedColor[1] * 255), color = "red"},
+					{text = (selectedRGB == 1 and "[%d] "  or "%d " ):format(pickedColor[2] * 255), color = "green"},
+					{text = (selectedRGB == 2 and "[%d]\n" or "%d\n"):format(pickedColor[3] * 255), color = "blue"},
+					{text = "Selected Hex: ", bold = true, color = c.secondary},
+					{text = vectors.rgbToHex(pickedColor).."\n\n", color = "#"..vectors.rgbToHex(pickedColor)},
+					{text = "Scroll to adjust an RGB Value.\nRight click to change selection.", color = c.secondary}
+				}
+			))
 			:toggleItem(itemCheck("potion{CustomPotionColor:" .. tostring(vectors.rgbToInt(colorLerp.currPos)) .. "}"))
 			:toggled(pick)
 		
 		t.camoAct
-			:title(toJson
-				{"",
-				{text = "Toggle Camo Mode\n\n", bold = true, color = c.primary},
-				{text = "Toggles changing your slime color to match your surroundings.", color = c.secondary}}
-			)
+			:title(toJson(
+				{
+					"",
+					{text = "Toggle Camo Mode\n\n", bold = true, color = c.primary},
+					{text = "Toggles changing your slime color to match your surroundings.", color = c.secondary}
+				}
+			))
 			:toggleItem(itemCheck("splash_potion{CustomPotionColor:" .. tostring(vectors.rgbToInt(colorLerp.currPos)) .. "}"))
 			:toggled(camo)
 		
 		t.rainbowAct
-			:title(toJson
-				{"",
-				{text = "Toggle Rainbow Mode\n\n", bold = true, color = c.primary},
-				{text = "Toggles on hue-shifting creating a rainbow effect.", color = c.secondary}}
-			)
+			:title(toJson(
+				{
+					"",
+					{text = "Toggle Rainbow Mode\n\n", bold = true, color = c.primary},
+					{text = "Toggles on hue-shifting creating a rainbow effect.", color = c.secondary}
+				}
+			))
 			:toggleItem(itemCheck("lingering_potion{CustomPotionColor:" .. tostring(vectors.rgbToInt(colorLerp.currPos)) .. "}"))
 			:toggled(rainbow)
 		

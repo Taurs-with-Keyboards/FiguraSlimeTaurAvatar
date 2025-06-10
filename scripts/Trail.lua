@@ -270,14 +270,16 @@ function events.RENDER(delta, context)
 	
 	if action_wheel:isEnabled() then
 		t.trailAct
-			:title(toJson
-				{"",
-				{text = "Toggle Trail/Melt Speed\n\n", bold = true, color = color.primary},
-				{text = "Toggles the formation of slime trails as you move, and how long they take to melt.\n\n", color = color.secondary},
-				{text = "Current melt speed: ", bold = true, color = color.secondary},
-				{text = (melt * 100).."% Each Tick\n\n"},
-				{text = "Scroll to adjust the speed.\nRight click resets speed to 2%.", color = color.secondary}}
-			)
+			:title(toJson(
+				{
+					"",
+					{text = "Toggle Trail/Melt Speed\n\n", bold = true, color = color.primary},
+					{text = "Toggles the formation of slime trails as you move, and how long they take to melt.\n\n", color = color.secondary},
+					{text = "Current melt speed: ", bold = true, color = color.secondary},
+					{text = (melt * 100).."% Each Tick\n\n"},
+					{text = "Scroll to adjust the speed.\nRight click resets speed to 2%.", color = color.secondary}
+				}
+			))
 		
 		for _, act in pairs(t) do
 			act:hoverColor(color.hover):toggleColor(color.active)

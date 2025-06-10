@@ -185,11 +185,13 @@ function events.RENDER(delta, context)
 	
 	if action_wheel:isEnabled() then
 		t.armsAct
-			:title(toJson
-				{"",
-				{text = "Arm Movement Toggle\n\n", bold = true, color = color.primary},
-				{text = "Toggles the movement swing movement of the arms.\nActions are not effected.", color = color.secondary}}
-			)
+			:title(toJson(
+				{
+					"",
+					{text = "Arm Movement Toggle\n\n", bold = true, color = color.primary},
+					{text = "Toggles the movement swing movement of the arms.\nActions are not effected.", color = color.secondary}
+				}
+			))
 		
 		for _, act in pairs(t) do
 			act:hoverColor(color.hover):toggleColor(color.active)

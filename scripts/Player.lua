@@ -129,18 +129,22 @@ function events.RENDER(delta, context)
 	
 	if action_wheel:isEnabled() then
 		t.vanillaSkinAct
-			:title(toJson
-				{"",
-				{text = "Toggle Vanilla Texture\n\n", bold = true, color = color.primary},
-				{text = "Toggles the usage of your vanilla skin.", color = color.secondary}}
-			)
+			:title(toJson(
+				{
+					"",
+					{text = "Toggle Vanilla Texture\n\n", bold = true, color = color.primary},
+					{text = "Toggles the usage of your vanilla skin.", color = color.secondary}
+				}
+			))
 		
 		t.modelAct
-			:title(toJson
-				{"",
-				{text = "Toggle Model Shape\n\n", bold = true, color = color.primary},
-				{text = "Adjust the model shape to use Default or Slim Proportions.\nWill be overridden by the vanilla skin toggle.", color = color.secondary}}
-			)
+			:title(toJson(
+				{
+					"",
+					{text = "Toggle Model Shape\n\n", bold = true, color = color.primary},
+					{text = "Adjust the model shape to use Default or Slim Proportions.\nWill be overridden by the vanilla skin toggle.", color = color.secondary}
+				}
+			))
 		
 		for _, act in pairs(t) do
 			act:hoverColor(color.hover):toggleColor(color.active)

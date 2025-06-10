@@ -117,11 +117,13 @@ function events.RENDER(delta, context)
 	
 	if action_wheel:isEnabled() then
 		t.soundAct
-			:title(toJson
-				{"",
-				{text = "Toggle Jumping/Falling Sound\n\n", bold = true, color = color.primary},
-				{text = "Toggles slime sound effects when jumping or landing.", color = color.secondary}}
-			)
+			:title(toJson(
+				{
+					"",
+					{text = "Toggle Jumping/Falling Sound\n\n", bold = true, color = color.primary},
+					{text = "Toggles slime sound effects when jumping or landing.", color = color.secondary}
+				}
+			))
 		
 		for _, act in pairs(t) do
 			act:hoverColor(color.hover):toggleColor(color.active)

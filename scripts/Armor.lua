@@ -180,43 +180,53 @@ function events.RENDER(delta, context)
 	
 	if action_wheel:isEnabled() then
 		t.allAct
-			:title(toJson
-				{"",
-				{text = "Toggle All Armor\n\n", bold = true, color = color.primary},
-				{text = "Toggles visibility of all armor parts.", color = color.secondary}}
-			)
+			:title(toJson(
+				{
+					"",
+					{text = "Toggle All Armor\n\n", bold = true, color = color.primary},
+					{text = "Toggles visibility of all armor parts.", color = color.secondary}
+				}
+			))
 			:toggled(helmet and chestplate and leggings and boots)
 		
 		t.helmetAct
-			:title(toJson
-				{"",
-				{text = "Toggle Helmet\n\n", bold = true, color = color.primary},
-				{text = "Toggles visibility of helmet parts.", color = color.secondary}}
-			)
+			:title(toJson(
+				{
+					"",
+					{text = "Toggle Helmet\n\n", bold = true, color = color.primary},
+					{text = "Toggles visibility of helmet parts.", color = color.secondary}
+				}
+			))
 			:toggled(helmet)
 		
 		t.chestplateAct
-			:title(toJson
-				{"",
-				{text = "Toggle Chestplate\n\n", bold = true, color = color.primary},
-				{text = "Toggles visibility of chestplate parts.", color = color.secondary}}
-			)
+			:title(toJson(
+				{
+					"",
+					{text = "Toggle Chestplate\n\n", bold = true, color = color.primary},
+					{text = "Toggles visibility of chestplate parts.", color = color.secondary}
+				}
+			))
 			:toggled(chestplate)
 		
 		t.leggingsAct
-			:title(toJson
-				{"",
-				{text = "Toggle Leggings\n\n", bold = true, color = color.primary},
-				{text = "Toggles visibility of leggings parts.", color = color.secondary}}
-			)
+			:title(toJson(
+				{
+					"",
+					{text = "Toggle Leggings\n\n", bold = true, color = color.primary},
+					{text = "Toggles visibility of leggings parts.", color = color.secondary}
+				}
+			))
 			:toggled(leggings)
 		
 		t.bootsAct
-			:title(toJson
-				{"",
-				{text = "Toggle Boots\n\n", bold = true, color = color.primary},
-				{text = "Toggles visibility of boots.", color = color.secondary}}
-			)
+			:title(toJson(
+				{
+					"",
+					{text = "Toggle Boots\n\n", bold = true, color = color.primary},
+					{text = "Toggles visibility of boots.", color = color.secondary}
+				}
+			))
 			:toggled(boots)
 		
 		for _, act in pairs(t) do
