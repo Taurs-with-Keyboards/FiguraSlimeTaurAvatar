@@ -90,8 +90,8 @@ if not host:isHost() then return end
 
 -- Required scripts
 local itemCheck = require("lib.ItemCheck")
-local s, color = pcall(require, "scripts.ColorProperties")
-if not s then color = {} end
+local s, c = pcall(require, "scripts.ColorProperties")
+if not s then c = {} end
 
 -- Sync on tick
 function events.TICK()
@@ -120,13 +120,13 @@ function events.RENDER(delta, context)
 			:title(toJson(
 				{
 					"",
-					{text = "Toggle Jumping/Falling Sound\n\n", bold = true, color = color.primary},
-					{text = "Toggles slime sound effects when jumping or landing.", color = color.secondary}
+					{text = "Toggle Jumping/Falling Sound\n\n", bold = true, color = c.primary},
+					{text = "Toggles slime sound effects when jumping or landing.", color = c.secondary}
 				}
 			))
 		
 		for _, act in pairs(t) do
-			act:hoverColor(color.hover):toggleColor(color.active)
+			act:hoverColor(c.hover):toggleColor(c.active)
 		end
 		
 	end

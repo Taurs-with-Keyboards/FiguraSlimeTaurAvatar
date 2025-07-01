@@ -134,8 +134,8 @@ if not host:isHost() then return end
 
 -- Required scripts
 local itemCheck = require("lib.ItemCheck")
-local s, color = pcall(require, "scripts.ColorProperties")
-if not s then color = {} end
+local s, c = pcall(require, "scripts.ColorProperties")
+if not s then c = {} end
 
 -- Sync on tick
 function events.TICK()
@@ -183,8 +183,8 @@ function events.RENDER(delta, context)
 			:title(toJson(
 				{
 					"",
-					{text = "Toggle All Armor\n\n", bold = true, color = color.primary},
-					{text = "Toggles visibility of all armor parts.", color = color.secondary}
+					{text = "Toggle All Armor\n\n", bold = true, color = c.primary},
+					{text = "Toggles visibility of all armor parts.", color = c.secondary}
 				}
 			))
 			:toggled(helmet and chestplate and leggings and boots)
@@ -193,8 +193,8 @@ function events.RENDER(delta, context)
 			:title(toJson(
 				{
 					"",
-					{text = "Toggle Helmet\n\n", bold = true, color = color.primary},
-					{text = "Toggles visibility of helmet parts.", color = color.secondary}
+					{text = "Toggle Helmet\n\n", bold = true, color = c.primary},
+					{text = "Toggles visibility of helmet parts.", color = c.secondary}
 				}
 			))
 			:toggled(helmet)
@@ -203,8 +203,8 @@ function events.RENDER(delta, context)
 			:title(toJson(
 				{
 					"",
-					{text = "Toggle Chestplate\n\n", bold = true, color = color.primary},
-					{text = "Toggles visibility of chestplate parts.", color = color.secondary}
+					{text = "Toggle Chestplate\n\n", bold = true, color = c.primary},
+					{text = "Toggles visibility of chestplate parts.", color = c.secondary}
 				}
 			))
 			:toggled(chestplate)
@@ -213,8 +213,8 @@ function events.RENDER(delta, context)
 			:title(toJson(
 				{
 					"",
-					{text = "Toggle Leggings\n\n", bold = true, color = color.primary},
-					{text = "Toggles visibility of leggings parts.", color = color.secondary}
+					{text = "Toggle Leggings\n\n", bold = true, color = c.primary},
+					{text = "Toggles visibility of leggings parts.", color = c.secondary}
 				}
 			))
 			:toggled(leggings)
@@ -223,14 +223,14 @@ function events.RENDER(delta, context)
 			:title(toJson(
 				{
 					"",
-					{text = "Toggle Boots\n\n", bold = true, color = color.primary},
-					{text = "Toggles visibility of boots.", color = color.secondary}
+					{text = "Toggle Boots\n\n", bold = true, color = c.primary},
+					{text = "Toggles visibility of boots.", color = c.secondary}
 				}
 			))
 			:toggled(boots)
 		
 		for _, act in pairs(t) do
-			act:hoverColor(color.hover):toggleColor(color.active)
+			act:hoverColor(c.hover):toggleColor(c.active)
 		end
 		
 	end

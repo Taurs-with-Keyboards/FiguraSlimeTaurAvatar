@@ -75,8 +75,8 @@ end
 if not host:isHost() then return end
 
 -- Required script
-local s, color = pcall(require, "scripts.ColorProperties")
-if not s then color = {} end
+local s, c = pcall(require, "scripts.ColorProperties")
+if not s then c = {} end
 
 -- Sync on tick
 function events.TICK()
@@ -105,15 +105,15 @@ function events.RENDER(delta, context)
 			:title(toJson(
 				{
 					"",
-					{text = "Toggle Slime Items\n\n", bold = true, color = color.primary},
-					{text = "Toggles the visibility of inventory items within your slime.", color = color.secondary},
+					{text = "Toggle Slime Items\n\n", bold = true, color = c.primary},
+					{text = "Toggles the visibility of inventory items within your slime.", color = c.secondary},
 					{text = "\n\nNotice:\n", bold = true, color = "gold"},
 					{text = "This feature currently does not function for other clients, only the host.\nThis is because I suck at coding. -Total", color = "yellow"}
 				}
 			))
 		
 		for _, act in pairs(t) do
-			act:hoverColor(color.hover):toggleColor(color.active)
+			act:hoverColor(c.hover):toggleColor(c.active)
 		end
 		
 	end

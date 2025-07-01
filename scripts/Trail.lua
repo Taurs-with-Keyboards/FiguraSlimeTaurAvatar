@@ -241,8 +241,8 @@ if not host:isHost() then return end
 
 -- Required scripts
 local itemCheck = require("lib.ItemCheck")
-local s, color = pcall(require, "scripts.ColorProperties")
-if not s then color = {} end
+local s, c = pcall(require, "scripts.ColorProperties")
+if not s then c = {} end
 
 -- Sync on tick
 function events.TICK()
@@ -273,16 +273,16 @@ function events.RENDER(delta, context)
 			:title(toJson(
 				{
 					"",
-					{text = "Toggle Trail/Melt Speed\n\n", bold = true, color = color.primary},
-					{text = "Toggles the formation of slime trails as you move, and how long they take to melt.\n\n", color = color.secondary},
-					{text = "Current melt speed: ", bold = true, color = color.secondary},
+					{text = "Toggle Trail/Melt Speed\n\n", bold = true, color = c.primary},
+					{text = "Toggles the formation of slime trails as you move, and how long they take to melt.\n\n", color = c.secondary},
+					{text = "Current melt speed: ", bold = true, color = c.secondary},
 					{text = (melt * 100).."% Each Tick\n\n"},
-					{text = "Scroll to adjust the speed.\nRight click resets speed to 2%.", color = color.secondary}
+					{text = "Scroll to adjust the speed.\nRight click resets speed to 2%.", color = c.secondary}
 				}
 			))
 		
 		for _, act in pairs(t) do
-			act:hoverColor(color.hover):toggleColor(color.active)
+			act:hoverColor(c.hover):toggleColor(c.active)
 		end
 		
 	end

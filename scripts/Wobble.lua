@@ -300,8 +300,8 @@ if not host:isHost() then return end
 
 -- Required scripts
 local itemCheck = require("lib.ItemCheck")
-local s, color = pcall(require, "scripts.ColorProperties")
-if not s then color = {} end
+local s, c = pcall(require, "scripts.ColorProperties")
+if not s then c = {} end
 
 -- Sync on tick
 function events.TICK()
@@ -365,17 +365,17 @@ function events.RENDER(delta, context)
 			:title(toJson(
 				{
 					"",
-					{text = "Set Wobble Strength\n\n", bold = true, color = color.primary},
-					{text = "Sets the Speed/Dampening of the slime.\n\n", color = color.secondary},
-					{text = "Set Speed: ", bold = true, color = color.secondary},
+					{text = "Set Wobble Strength\n\n", bold = true, color = c.primary},
+					{text = "Sets the Speed/Dampening of the slime.\n\n", color = c.secondary},
+					{text = "Set Speed: ", bold = true, color = c.secondary},
 					{text = (strengthSwitch and "[%s]\n" or "%s\n"):format(math.map(speed, speedMin, speedMax, 0, 100).."%")},
-					{text = "Modified Speed: ", bold = true, color = color.secondary},
+					{text = "Modified Speed: ", bold = true, color = c.secondary},
 					{text = math.map(slimeWobble.s, speedMin, speedMax, 0, 100).."%\n\n"},
-					{text = "Set Dampening: ", bold = true, color = color.secondary},
+					{text = "Set Dampening: ", bold = true, color = c.secondary},
 					{text = (not strengthSwitch and "[%s]\n" or "%s\n"):format(math.map(dampen, dampenMin, dampenMax, 0, 100).."%")},
-					{text = "Modified Dampening: ", bold = true, color = color.secondary},
+					{text = "Modified Dampening: ", bold = true, color = c.secondary},
 					{text = math.map(slimeWobble.d, dampenMin, dampenMax, 0, 100).."%\n\n"},
-					{text = "Scroll to adjust a value.\nLeft click selects which value is being adjusted.\nRight click resets the value back to 7.5%.", color = color.secondary}
+					{text = "Scroll to adjust a value.\nLeft click selects which value is being adjusted.\nRight click resets the value back to 7.5%.", color = c.secondary}
 				}
 			))
 			:item(itemCheck("potion{\"CustomPotionColor\":" .. tostring(vectors.rgbToInt(potionColor)) .. "}"))
@@ -384,8 +384,8 @@ function events.RENDER(delta, context)
 			:title(toJson(
 				{
 					"",
-					{text = "Set Rotational Wobble\n\n", bold = true, color = color.primary},
-					{text = "Sets if slime should wobble while you look around.", color = color.secondary}
+					{text = "Set Rotational Wobble\n\n", bold = true, color = c.primary},
+					{text = "Sets if slime should wobble while you look around.", color = c.secondary}
 				}
 			))
 		
@@ -393,8 +393,8 @@ function events.RENDER(delta, context)
 			:title(toJson(
 				{
 					"",
-					{text = "Set Damage Wobble\n\n", bold = true, color = color.primary},
-					{text = "Sets if slime should wobble if damage is taken.", color = color.secondary}
+					{text = "Set Damage Wobble\n\n", bold = true, color = c.primary},
+					{text = "Sets if slime should wobble if damage is taken.", color = c.secondary}
 				}
 			))
 		
@@ -402,8 +402,8 @@ function events.RENDER(delta, context)
 			:title(toJson(
 				{
 					"",
-					{text = "Set Temperature Modifier\n\n", bold = true, color = color.primary},
-					{text = "Sets if biome temperature should affect the slime wobble.", color = color.secondary}
+					{text = "Set Temperature Modifier\n\n", bold = true, color = c.primary},
+					{text = "Sets if biome temperature should affect the slime wobble.", color = c.secondary}
 				}
 			))
 		
@@ -411,15 +411,15 @@ function events.RENDER(delta, context)
 			:title(toJson(
 				{
 					"",
-					{text = "Set Health Size\n\n", bold = true, color = color.primary},
-					{text = "Sets if your slime size is determinded by your health."..(powerActive and "\n\n" or ""), color = color.secondary},
+					{text = "Set Health Size\n\n", bold = true, color = c.primary},
+					{text = "Sets if your slime size is determinded by your health."..(powerActive and "\n\n" or ""), color = c.secondary},
 					{text = powerActive and "Notice:\n" or "", bold = true, color = "gold"},
 					{text = powerActive and "Origins is currently overriding this toggle." or "", color = "yellow"}
 				}
 			))
 		
 		for _, act in pairs(t) do
-			act:hoverColor(color.hover):toggleColor(color.active)
+			act:hoverColor(c.hover):toggleColor(c.active)
 		end
 		
 	end

@@ -16,8 +16,8 @@ if not s then camera = {} end
 local s, wobble = pcall(require, "scripts.Wobble")
 if not s then wobble = {} end
 
-local s, color, colorActs = pcall(require, "scripts.ColorProperties")
-if not s then color = {} colorActs = {} end
+local s, c, colorActs = pcall(require, "scripts.ColorProperties")
+if not s then c = {} colorActs = {} end
 
 local s, trail = pcall(require, "scripts.Trail")
 if not s then trail = {} end
@@ -76,7 +76,7 @@ local pageActs = {
 	
 	color = action_wheel:newAction()
 		:item(itemCheck("brewing_stand"))
-		:onLeftClick(function() descend(pages.color) end),
+		:onLeftClick(function() descend(pages.c) end),
 	
 	anims = action_wheel:newAction()
 		:item(itemCheck("jukebox"))
@@ -101,42 +101,42 @@ function events.RENDER(delta, context)
 	if action_wheel:isEnabled() then
 		pageActs.avatar
 			:title(toJson(
-				{text = "Avatar Settings", bold = true, color = color.primary}
+				{text = "Avatar Settings", bold = true, color = c.primary}
 			))
 		
 		pageActs.slime
 			:title(toJson(
-				{text = "Slime Settings", bold = true, color = color.primary}
+				{text = "Slime Settings", bold = true, color = c.primary}
 			))
 		
 		pageActs.color
 			:title(toJson(
-				{text = "Color Settings", bold = true, color = color.primary}
+				{text = "Color Settings", bold = true, color = c.primary}
 			))
 		
 		pageActs.anims
 			:title(toJson(
-				{text = "Animations", bold = true, color = color.primary}
+				{text = "Animations", bold = true, color = c.primary}
 			))
 		
 		pageActs.armor
 			:title(toJson(
-				{text = "Armor Settings", bold = true, color = color.primary}
+				{text = "Armor Settings", bold = true, color = c.primary}
 			))
 		
 		pageActs.camera
 			:title(toJson(
-				{text = "Camera Settings", bold = true, color = color.primary}
+				{text = "Camera Settings", bold = true, color = c.primary}
 			))
 		
 		pageActs.wobble
 			:title(toJson(
-				{text = "Wobble Settings", bold = true, color = color.primary}
+				{text = "Wobble Settings", bold = true, color = c.primary}
 			))
-			:item(itemCheck("potion{\"CustomPotionColor\":" .. tostring(vectors.rgbToInt(color.hover)) .. "}"))
+			:item(itemCheck("potion{\"CustomPotionColor\":" .. tostring(vectors.rgbToInt(c.hover)) .. "}"))
 		
 		for _, act in pairs(pageActs) do
-			act:hoverColor(color.hover)
+			act:hoverColor(c.hover)
 		end
 		
 	end
