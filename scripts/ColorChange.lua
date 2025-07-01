@@ -1,0 +1,302 @@
+-- Required scripts
+local parts  = require("lib.PartsAPI")
+local lerp   = require("lib.LerpAPI")
+local ground = require("lib.GroundCheck")
+
+-- Config setup
+config:name("SlimeTaur")
+local pick    = config:load("ColorPick")
+local camo    = config:load("ColorCamo") or false
+local rainbow = config:load("ColorRainbow") or false
+if pick == nil then pick = true end
+
+-- Create random color
+local pickedColor = config:load("ColorPicked") or vec(client.uuidToIntArray(avatar:getUUID())).xyz % 256 / 255
+
+-- Variables
+local selectedRGB = 0
+local groundTimer = 0
+
+-- All parts
+local colorParts = parts:createTable(function(part) return part:getName():find("_[cC]olou?r") end)
+local transParts = parts:createTable(function(part) return part:getName():find("_[tT]rans") end)
+
+-- Lerps
+local colorLerp   = lerp:new(0.2, vec(1, 1, 1))
+local opacityLerp = lerp:new(0.2, 1)
+
+function events.TICK()
+	
+	if pick then
+		
+		-- Set to picked color
+		colorLerp.target = pickedColor
+		
+	elseif camo then
+		
+		-- Variables
+		local pos    = parts.group.Slime_Wobble:partToWorldMatrix():apply(0, -10, 0)
+		local scale  = parts.group.Slime_Wobble:getScale()
+		local blocks = world.getBlocks(pos - scale, pos + scale)
+		local solid  = false
+		
+		-- Check for solid blocks
+		for _, block in ipairs(blocks) do
+			
+			if block:hasCollision() then
+				solid = true
+				break
+			end
+			
+		end
+		
+		-- Gather blocks
+		for i = #blocks, 1, -1 do
+			
+			local block = blocks[i]
+			
+			if block:isAir() or solid and block.id == "minecraft:water" then
+				table.remove(blocks, i)
+			end
+			
+		end
+		
+		if #blocks ~= 0 then
+			
+			-- Init colors
+			local calcColor   = vectors.vec3()
+			local calcOpacity = #blocks
+			
+			for _, block in ipairs(blocks) do
+				
+				-- Gather colors
+				if block.id == "minecraft:water" then
+					calcColor = calcColor + world.getBiome(block:getPos()):getWaterColor()
+				else
+					calcColor = calcColor + block:getMapColor()
+				end
+				
+				-- Gather translucency
+				if block.id:find("glass") then
+					calcOpacity = calcOpacity - 0.8
+				end
+				
+			end
+			
+			-- Find averages
+			colorLerp.target = calcColor / #blocks
+			opacityLerp.target = calcOpacity / #blocks
+			
+		elseif groundTimer >= 40 then
+			
+			-- Find sky color if ground not found
+			colorLerp.target = world.getBiome(pos):getSkyColor()
+			opacityLerp.target = 1
+			
+		end
+		
+		-- Ground timer
+		groundTimer = ground() and 0 or groundTimer + 1
+		
+	elseif rainbow then
+		
+		-- Set to RGB
+		local calcColor = world.getTime() % 360 / 360
+		colorLerp.target = vectors.hsvToRGB(calcColor, 1, 1)
+		opacityLerp.target = 1
+		
+	else
+		
+		-- Set to default
+		colorLerp.target = vec(1, 1, 1)
+		opacityLerp.target = 1
+		
+	end
+	
+end
+
+function events.RENDER(delta, context)
+	
+	-- Slime textures
+	for _, part in ipairs(colorParts) do
+		part:color(colorLerp.currPos)
+	end
+	for _, part in ipairs(transParts) do
+		part:opacity(opacityLerp.currPos)
+	end
+	
+	-- Glowing outline
+	renderer:outlineColor(colorLerp.currPos)
+	
+	-- Avatar color
+	avatar:color(colorLerp.currPos)
+	
+end
+
+-- Choose color function
+local function pickColor(x)
+	
+	x = x/255
+	pickedColor[selectedRGB+1] = math.clamp(pickedColor[selectedRGB+1] + x, 0, 1)
+	
+	config:save("ColorPicked", pickedColor)
+	
+end
+
+-- Swaps selected rgb value
+local function selectRGB()
+	
+	selectedRGB = (selectedRGB + 1) % 3
+	
+end
+
+-- Color type toggle
+function pings.setColorType(type)
+	
+	pick    = type == 1
+	camo    = type == 2
+	rainbow = type == 3
+	
+	config:save("ColorPick", pick)
+	config:save("ColorCamo", camo)
+	config:save("ColorRainbow", rainbow)
+	
+end
+
+-- Sync variables
+function pings.syncColor(a, b, c, d)
+	
+	pick        = a
+	pickedColor = b
+	camo        = c
+	rainbow     = d
+	
+end
+
+-- Host only instructions
+if not host:isHost() then return end
+
+-- Sync on tick
+function events.TICK()
+	
+	if world.getTime() % 200 == 0 then
+		pings.syncColor(pick, pickedColor, camo, rainbow)
+	end
+	
+end
+
+-- Required scripts
+local s, wheel, itemCheck, c = pcall(require, "scripts.ActionWheel")
+if not s then return end -- Kills script early if ActionWheel.lua isnt found
+
+-- Dont preform if color properties is empty
+if next(c) ~= nil then
+	
+	-- Store init colors
+	local initColors = {}
+	for k, v in pairs(c) do
+		initColors[k] = v
+	end
+	
+	-- Update action wheel colors
+	function events.RENDER(delta, context)
+		
+		-- Create mermod colors
+		local appliedColors = {
+			hover     = colorLerp.currPos,
+			active    = (colorLerp.currPos):applyFunc(function(a) return math.map(a, 0, 1, 0.1, 0.9) end),
+			primary   = "#"..vectors.rgbToHex(colorLerp.currPos),
+			secondary = "#"..vectors.rgbToHex((colorLerp.currPos):applyFunc(function(a) return math.map(a, 0, 1, 0.1, 0.9) end))
+		}
+		
+		-- Update action wheel colors
+		for k in pairs(c) do
+			c[k] = appliedColors[k]
+		end
+		
+	end
+	
+end
+
+-- Pages
+local parentPage = action_wheel:getPage("Slime") or action_wheel:getPage("Main")
+local colorPage  = action_wheel:newPage("Color")
+
+-- Actions table setup
+local a = {}
+
+-- Actions
+a.pageAct = parentPage:newAction()
+	:item(itemCheck("brewing_stand"))
+	:onLeftClick(function() wheel:descend(colorPage) end)
+
+a.pickAct = colorPage:newAction()
+	:item(itemCheck("glass_bottle"))
+	:onToggle(function(apply) pings.setColorType(apply and 1) end)
+	:onRightClick(selectRGB)
+	:onScroll(pickColor)
+
+a.camoAct = colorPage:newAction()
+	:item(itemCheck("glass_bottle"))
+	:onToggle(function(apply) pings.setColorType(apply and 2) end)
+
+a.rainbowAct = colorPage:newAction()
+	:item(itemCheck("glass_bottle"))
+	:onToggle(function(apply) pings.setColorType(apply and 3) end)
+
+-- Update actions
+function events.RENDER(delta, context)
+	
+	if action_wheel:isEnabled() then
+		a.pageAct
+			:title(toJson(
+				{text = "Color Settings", bold = true, color = c.primary}
+			))
+		
+		a.pickAct
+			:title(toJson(
+				{
+					"",
+					{text = "Toggle Picked Color Mode\n\n", bold = true, color = c.primary},
+					{text = "Toggles the usage of a picked color.\n\n", color = c.secondary},
+					{text = "Selected RGB: ", bold = true, color = c.secondary},
+					{text = (selectedRGB == 0 and "[%d] "  or "%d " ):format(pickedColor[1] * 255), color = "red"},
+					{text = (selectedRGB == 1 and "[%d] "  or "%d " ):format(pickedColor[2] * 255), color = "green"},
+					{text = (selectedRGB == 2 and "[%d]\n" or "%d\n"):format(pickedColor[3] * 255), color = "blue"},
+					{text = "Selected Hex: ", bold = true, color = c.secondary},
+					{text = vectors.rgbToHex(pickedColor).."\n\n", color = "#"..vectors.rgbToHex(pickedColor)},
+					{text = "Scroll to adjust an RGB Value.\nRight click to change selection.", color = c.secondary}
+				}
+			))
+			:toggleItem(itemCheck("potion{CustomPotionColor:" .. tostring(vectors.rgbToInt(colorLerp.currPos)) .. "}"))
+			:toggled(pick)
+		
+		a.camoAct
+			:title(toJson(
+				{
+					"",
+					{text = "Toggle Camo Mode\n\n", bold = true, color = c.primary},
+					{text = "Toggles changing your slime color to match your surroundings.", color = c.secondary}
+				}
+			))
+			:toggleItem(itemCheck("splash_potion{CustomPotionColor:" .. tostring(vectors.rgbToInt(colorLerp.currPos)) .. "}"))
+			:toggled(camo)
+		
+		a.rainbowAct
+			:title(toJson(
+				{
+					"",
+					{text = "Toggle Rainbow Mode\n\n", bold = true, color = c.primary},
+					{text = "Toggles on hue-shifting creating a rainbow effect.", color = c.secondary}
+				}
+			))
+			:toggleItem(itemCheck("lingering_potion{CustomPotionColor:" .. tostring(vectors.rgbToInt(colorLerp.currPos)) .. "}"))
+			:toggled(rainbow)
+		
+		for _, act in pairs(a) do
+			act:hoverColor(c.hover):toggleColor(c.active)
+		end
+		
+	end
+	
+end
