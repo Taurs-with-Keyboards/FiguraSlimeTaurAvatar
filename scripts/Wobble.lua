@@ -330,6 +330,7 @@ if not pageExists then
 end
 
 a.wobblePageAct = slimePage:newAction()
+	:item(itemCheck("brewing_stand"))
 	:onLeftClick(function() wheel:descend(wobblePage) end)
 
 a.strengthAct = wobblePage:newAction()
@@ -384,7 +385,6 @@ function events.RENDER(delta, context)
 			:title(toJson(
 				{text = "Wobble Settings", bold = true, color = c.primary}
 			))
-			:item(itemCheck("potion{\"CustomPotionColor\":" .. tostring(vectors.rgbToInt(c.hover)) .. "}"))
 		
 		-- Variables
 		local potionColor = math.lerp(vectors.hexToRGB("4CFF00"), vectors.hexToRGB("FFD800"),
