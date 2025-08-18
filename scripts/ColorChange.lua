@@ -165,6 +165,16 @@ function pings.setColorType(type)
 	
 end
 
+-- Pick color
+function pings.setPickedColor(v)
+	
+	colorTypes.Pick = v
+	color = "Pick"
+	config:save("ColorType", color)
+	config:save("ColorPicked", colorTypes.Pick)
+	
+end
+
 -- Sync variables
 function pings.syncColor(a, b)
 	
@@ -235,9 +245,7 @@ function events.CHAT_SEND_MESSAGE(msg)
 			
 			-- Apply
 			msg = vectors.hexToRGB(msg)
-			colorTypes.Pick = msg
-			color = "Pick"
-			config:save("ColorPicked", msg)
+			pings.setPickedColor(msg)
 			
 			-- Notify
 			host:setActionbar("Color Applied!")
