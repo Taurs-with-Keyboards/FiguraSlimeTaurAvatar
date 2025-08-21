@@ -24,6 +24,11 @@ local colorTypes = {
 	
 }
 
+-- Reset if color is out of bounds
+if type(color) == "number" and color > #colorTypes then
+	color = 1
+end
+
 -- Variable
 local groundTimer = 0
 
