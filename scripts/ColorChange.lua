@@ -366,8 +366,8 @@ function events.RENDER(delta, context)
 			:title(toJson(
 				{
 					"",
-					{text = actState.title, bold = true, color = c.primary},
-					{text = "\n\nYour slime\'s color will "..actState.info.."\n\nLeft or Right click to change color modes.", color = c.secondary}
+					{text = ("%s\n\n"):format(actState.title), bold = true, color = c.primary},
+					{text = ("Your slime\'s color will %s\n\nLeft or Right click to change color modes."):format(actState.info), color = c.secondary}
 				}
 			))
 			:item(itemCheck(actState.item.."{CustomPotionColor:" .. tostring(vectors.rgbToInt(colorLerp.currPos)) .. "}"))
