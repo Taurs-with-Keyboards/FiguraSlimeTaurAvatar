@@ -9,8 +9,8 @@ function events.ON_PLAY_SOUND(id, pos, vol, pitch, loop, cat, path)
 	-- Make sure the sound is (most likely) played by the user
 	if (player:getPos() - pos):length() > 0.05 then return end
 	
-	-- If sound contains ".step", ".fall", ".big_fall", or ".small_fall", stop the sound
-	if id:find(".step") or id:find(".fall") or id:find(".big_fall") or id:find(".small_fall") then
+	-- If sound contains ".step" or "fall", stop the sound
+	if id:find(".step") or id:find("fall") then
 		return true
 	end
 	
