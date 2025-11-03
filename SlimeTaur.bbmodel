@@ -4604,7 +4604,7 @@
 	],
 	"textures": [
 		{
-			"path": "D:\\Total\\OneDrive\\Documents\\Misc Docs\\Video Game Assets\\Modding Assets\\Minecraft Assets\\Figura Avatars\\avatars\\GitHubRepos\\FiguraSlimeTaurAvatar\\textures\\skin.png",
+			"path": "D:\\Total\\Documents\\Figura\\Instance Avatars\\avatars\\GitHubRepos\\FiguraSlimeTaurAvatar\\textures\\skin.png",
 			"name": "skin.png",
 			"folder": "",
 			"namespace": "",
@@ -4633,7 +4633,7 @@
 			"source": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAAApBJREFUeF7tWztLA0EQvoCgEGsTiPhAwcbOJr12WmlhYWVlr1b+gFRqoZVVKkutLLUXwc5GUHxgIBFLBa1OJrmDzbi3O+u6SHJf2rndmftudl7fphBZfmc3T7HpkfreoXGHk/puwabDJA+t32ocGVCdHtXaeHn3EhEAlVJZK2+0mtFfALA0O661k2wj/Vk6Vta3Y5t+AGBzT3gAjgBiAIJgX6fB+eaeMc+XbzaMcfLo6sAoH1h9M8oXixWjPLT+AgFQLY3o83zrNSIDJspFrfyx+RERAMXJMa384+E5IgAGKzNa+VfjNiIALspb2nRMtpH+44VhrXzt/D0m/cM7O1r5e60Wk/6hqX2t/PN+MwYAEg/YnOt4wGmj8yGXE6/dv86JB+QeAMSAfg+CpjwUOg39exrkL8/7b97v29rL0P27r338fX/kR7X74/2+pL8P3T362gcAGAJaD1Cf6fsjwHsBHvR4rc9rex7EXIOma6/gal9WGZx+5K5S+JLV/rzW57V9WsunvQRfz8+bbT/+vG1/2360HgBkNELwgAQBHAG1G0QMQBDsngBJoiylQWSBZKSGNOg4Q5TODLM8TOKhqAMkdYBagbmWmj1fCmMewBCgfjvl4zn/LuHb1fU6cH35fF/7RPOA3AOAeYCCQC7mASk3x7k4zr1xro24NZXbc+XyJNydaX+JfaI6AAAk7Cw8gNHREhfDEVD4fcQAxwsNCIKCGxzIAoYjJolRSIOSdjj3dQDmAQoCvvx7r63XssO+7XD6/wLf+wW/Xe9iPwAIPRLzvV8Qen2bGwwZBH3nCaHXtwHwTYM+c3sTsySZ+/tWigAAHoAjgBiAIIgs4DkURRrMuCAhzeO+APp4MOqAvJfC38z1ql4UO+HHAAAAAElFTkSuQmCC"
 		},
 		{
-			"path": "D:\\Total\\OneDrive\\Documents\\Misc Docs\\Video Game Assets\\Modding Assets\\Minecraft Assets\\Figura Avatars\\avatars\\GitHubRepos\\FiguraSlimeTaurAvatar\\textures\\slime.png",
+			"path": "D:\\Total\\Documents\\Figura\\Instance Avatars\\avatars\\GitHubRepos\\FiguraSlimeTaurAvatar\\textures\\slime.png",
 			"name": "slime.png",
 			"folder": "block",
 			"namespace": "",
@@ -4662,7 +4662,7 @@
 			"source": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAYAAADDPmHLAAAAAXNSR0IArs4c6QAABY1JREFUeF7tncGW2yAMRZPP6m4+vbt+1rROjY/DmBiBHrHC7aqnBSGeLgIDse830Z/v7+8/Hqbv9/uvvR2VXQ9fI9q4q5xeA/W70/5XAQB3u51+hq3uDoDXCB2laA7YqHav0o4KgGWEfq2dbB2t+/qlv7fo+GQLAFokfFFnl/oXoVuDn1pINnIA3OwCwBgAUgBrW0sBBoBaxRrLqaeA/VRgdTHVzacT18xCBrCG5aT8wRRgXQscpXumAOc4JXMjM0DtvA0AomAfmQWAbKNpoPaXaAoAAMAXRNYAvnqqrZEByAC+jL3IANaGeAy0KtZQfkQGWNxiI6ghOCOqjAKgtS/sBLYqV1lPDcDiRu3zf+4yh0GVQewppgKgx6ehddkKFsnNhRCRsM5m3TNA8s/rYghXwpwjnpkrAnAWQEvqPLOVd9HTtqetHj+1YWy3vgFgDdKZGL32kn3vDOBtr+Rne0jG1swBaF6xj7q82bm24JJpPgV4jdSx3F63NcuUc4Ve3LOt25bn9iHP66tYPZdNh/gZHYDmKWDd8JHd3MkAuKyfAPA/UvuDnJ5M570V7G0v9W2zCwAA8PRTth76R9TN1wCXTa1MARocAOD/UXUr+EwBqwLyuZUMQAbwWFzKQWURyCKQRSCPgZp0rbDKIpBF4ONVLr0bN/K5lUWgYvzfbmQAMsBTBuAwyD7QQr9xJGUAe7epcahAuMfA1IsoFy2i+BllfHAlTPQ+w3AARHEYP30VkF0L93UTayoFAEClbBC7ABAkUCo3AUClbBC7ABAkUCo3AUClbBC7ABAkUCo3AUClbBC7ABAkUCo3AUClbBC7ABAkUCo3AUClbBC7ABAkUCo3AUClbBC7ABAkUCo3AUClbBC7ABAkUCo3AUClbBC7ABAkUCo3AUClbBC7ABAkUCo3AUClbBC7ABAkUCo3AUClbBC7ABAkUCo3AUClbBC7ABAkUCo3AUClbBC7ABAkUCo3AUClbBC7ABAkUCo3AUClbBC7ABAkUCo3AUClbBC7ABAkUCo3AUClbBC7ABAkUCo3AUClbBC7ABAkUCo3AUClbBC7bgC0foLW62POynf0tvatxECtryPa9QbA+vUtr485/7DTOwAL4lv7l7uR3iy+/XvlAJC12w2AN6W9gasdXa/ayfrUK36pqQ2G5PM72vUCoOWjzl4fc3Z/X/8uEHnwf4xgI7CH9g4AUEGX3H30Y2nXGwCr416fmnH9du/BK+l7A59zstdpm746X4VvZPH2aBcAMtkORr938FOLCYLcvnUQWQP/nAVaa6d6O2pbPsF6uQwAAEYiPhSA0ug0qnNaPG9n1OjfsgBTwPEUAACn7K4FyAC1Sh2WIwPsPlq5KNT6AUu3p4BsJa5aAJYWgkwB/yDoWkz2bgQBgDGjZVNAGsU1Vi65EQQANaHblfm0rWAAMAJwsB9gsXC5wyAAsITPIRNUnoadetU79xdAnmcRaE3lqsC9249pM4DxIEKWut/tx3QAWEfcaS7+jALz7AQ2PMZJHt9Wbiz3CtR+LC59/hqgcSvX/RQvA6B2R0zpBwC8yOZK4S07gSo/9htaqixwjfsAZIAH5jlIAHCyllONPOthkLsfy+PtVFfCyADPGWAHwNG5Ru90cL1LoQDwEgDL4Zb1Afga18IB4CcAy78U9kdqn05KMFzvhyEAcAzAPoLem2W15xYj2r2zEbRt9jwWoIVf6VjTe3V5rzOV6gbXgqndBIC1/seW3wfEewTmopUywch2t1vB7z6EKRzHnoEmO5Q6a/hT/j8HoLpfXqmr105v/dTh2nm5WqAgBbt/FxCkn7hZUAAAJkcDAABgcgUm7z4ZAAAmV2Dy7pMBAGByBSbvPhkAACZXYPLukwEAYHIFJu8+GQAAJldg8u7/BRitYoWG/TFSAAAAAElFTkSuQmCC"
 		},
 		{
-			"path": "D:\\Total\\OneDrive\\Documents\\Misc Docs\\Video Game Assets\\Modding Assets\\Minecraft Assets\\Figura Avatars\\avatars\\GitHubRepos\\FiguraSlimeTaurAvatar\\textures\\slimeOverlay.png",
+			"path": "D:\\Total\\Documents\\Figura\\Instance Avatars\\avatars\\GitHubRepos\\FiguraSlimeTaurAvatar\\textures\\slimeOverlay.png",
 			"name": "slimeOverlay.png",
 			"folder": "block",
 			"namespace": "",
@@ -4691,7 +4691,7 @@
 			"source": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAYAAADDPmHLAAAAAXNSR0IArs4c6QAAAdFJREFUeF7t1AENAAAMg7DPv+kLKXMAIds12sBo+uCvAPAICqAAcAM4fg9QALgBHL8HKADcAI7fAxQAbgDH7wEKADeA4/cABYAbwPF7gALADeD4PUAB4AZw/B6gAHADOH4PUAC4ARy/BygA3ACO3wMUAG4Ax+8BCgA3gOP3AAWAG8Dxe4ACwA3g+D1AAeAGcPweoABwAzh+D1AAuAEcvwcoANwAjt8DFABuAMfvAQoAN4Dj9wAFgBvA8XuAAsAN4Pg9QAHgBnD8HqAAcAM4fg9QALgBHL8HKADcAI7fAxQAbgDH7wEKADeA4/cABYAbwPF7gALADeD4PUAB4AZw/B6gAHADOH4PUAC4ARy/BygA3ACO3wMUAG4Ax+8BCgA3gOP3AAWAG8Dxe4ACwA3g+D1AAeAGcPweoABwAzh+D1AAuAEcvwcoANwAjt8DFABuAMfvAQoAN4Dj9wAFgBvA8XuAAsAN4Pg9QAHgBnD8HqAAcAM4fg9QALgBHL8HKADcAI7fAxQAbgDH7wEKADeA4/cABYAbwPF7gALADeD4PUAB4AZw/B6gAHADOH4PUAC4ARy/BygA3ACO3wMUAG4Ax+8BCgA3gOP3AAWAG8DxewA8gAekjwCBZtfVOwAAAABJRU5ErkJggg=="
 		},
 		{
-			"path": "D:\\Total\\OneDrive\\Documents\\Misc Docs\\Video Game Assets\\Modding Assets\\Minecraft Assets\\Figura Avatars\\avatars\\GitHubRepos\\FiguraSlimeTaurAvatar\\textures\\misc\\cape.png",
+			"path": "D:\\Total\\Documents\\Figura\\Instance Avatars\\avatars\\GitHubRepos\\FiguraSlimeTaurAvatar\\textures\\misc\\cape.png",
 			"name": "cape.png",
 			"folder": "",
 			"namespace": "",
